@@ -1,0 +1,16 @@
+votelist {
+
+  .select-icon {
+    visibility: hidden;
+  }
+
+  .label {
+    color: color($colors, dark);
+  }
+
+  .item  {
+    color: color($colors, dark);
+    background-color: color($colors, light);
+  }
+
+}

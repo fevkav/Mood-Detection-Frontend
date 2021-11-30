@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Abstimmen</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<ion-card >
+  <ion-card-content *ngIf="showForm">
+    <form (ngSubmit)="sendeVote()" [formGroup]="formData">
+      <ion-list radio-group >
+        <ion-item>
+          <ion-label>Aktuelle KW: {{currentWeek}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Stimmung bisher: {{currentMood}}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-range min="1" max="5" [(ngModel)]="mood" (ionChange)="toggleMoodText(mood)"
+                   formControlName="mood">
+          <ion-icon range-left name="sad" ios="md-sad"></ion-icon>
+          <ion-icon range-right name="happy" ios="md-happy"></ion-icon>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-label>Deine Stimmung ist:</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-input readonly [value]="moodInText"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full type="submit" [disabled]=!formData.valid>Sende deine Abstimmung</button>
+      </ion-item>
+    </form>
+  </ion-card-content>
+  <ion-card-content *ngIf="!showForm">
+    <p class="item">
+    Vielen Dank für Ihre Stimmabgabe!<br>
+    Sie haben für die Kalenderwoche {{this.currentWeek}} mit "{{moodInText}}" abgestimmt.
+    </p>
+  </ion-card-content>
+</ion-card>
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Statistik</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Gesamte Statistik:
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Teilnehmer: {{amountEmployees}}, davon mit Stimme: {{amountEmployeesWithVote}}</ion-label>
+
+      <canvas baseChart width="200"
+              [datasets]="averageChartData"
+              [labels]="averageChartLabels"
+              [options]="averageChartOptions"
+              [legend]="averageChartLegend"
+              [chartType]="averageChartType">
+      </canvas>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Wähle KW für Statistik</ion-label>
+        <ion-select interface="popover" [(ngModel)]="choosenWeek" (ionChange)="getAmountVotes()">
+          <ion-option *ngFor="let week of averageChartLabels" [value]="week">
+            {{week}}
+          </ion-option>
+          <ion-option selected value="0">Alle</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Stimmen insgesamt: {{amountVotes}}</ion-label>
+      </ion-item>
+      <canvas baseChart height="310"
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [colors]="barChartColors"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              >
+      </canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

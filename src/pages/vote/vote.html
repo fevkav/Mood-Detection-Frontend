@@ -1,0 +1,35 @@
+<!--
+  Hier gibt man seine Stimme in einer Skala von 1 - 5 für die aktuelle Kalenderwoche ab.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Abstimmung</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Trage deine Stimmung in die Skala ein:</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-range min="1" max="5" [(ngModel)]="mood" (ionChange) = "schreibeMoodInText()">
+      <ion-icon range-left name="sad" ios="md-sad"  ></ion-icon>
+      <ion-icon range-right name="happy" ios="md-happy"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-label>Deine Stimmung ist: </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input readonly [value]="moodInText"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button full (click)="receiveMood(mood)">Sende deine Abstimmung</button>
+  </ion-item>
+
+
+
+</ion-content>

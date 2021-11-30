@@ -1,0 +1,26 @@
+<!--
+  Dies ist das Template für die View der Stimmenstatistik.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Statistik</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!--
+  <ion-searchbar (ionInput)="onSearchInput($event)"></ion-searchbar>
+  -->
+  <button ion-button full (click)="onClickButton($event)">Zeige alle abgegebenen Stimmen</button>
+
+
+<ion-list>
+  <ion-item *ngFor="let mood of moods">
+    <b>Stimmung: {{mood.mood}}</b><br>Kalendarwoche: {{mood.calendarweek}}
+  </ion-item>
+</ion-list>
+
+</ion-content>

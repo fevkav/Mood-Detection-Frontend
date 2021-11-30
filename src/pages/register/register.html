@@ -1,0 +1,35 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrierung</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Fachbereich wählen:
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="register()" [formGroup]="formData">
+      <ion-item class="select-content">
+        <ion-label stacked></ion-label>
+        <ion-select formControlName="fachbereich" class="select-content">
+          <ion-option *ngFor="let manager of managers" [value]="manager.id" >{{manager.fachbereich}}</ion-option>
+        </ion-select>
+
+      </ion-item>
+        <button ion-button full type="submit" [disabled]=!formData.valid>Registrieren</button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
